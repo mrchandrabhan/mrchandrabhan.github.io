@@ -1,0 +1,456 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#eef2f1">
+<meta property="og:title" content="Chandrabhan Singh Vaghela">
+<meta property="og:description" content="DevOps and infrastructure engineer building cloud platforms and applied AI systems.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://mrchandrabhan.github.io/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23122a2c'/%3E%3Ctext x='16' y='22' font-family='Arial' font-weight='700' font-size='15' text-anchor='middle' fill='%23f0a14f'%3ECSV%3C/text%3E%3C/svg%3E">
+<title>Chandrabhan Singh Vaghela</title>
+<meta name="description" content="Portfolio of Chandrabhan Singh Vaghela — DevOps and infrastructure engineer building cloud platforms and applied AI systems.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one narrow reading column on a cool "runbook" ground; the hero pairs the name with a to-scale deploy-time readout, then the page reads like an ops log. */
+:root{
+  --bg:#eef2f1;
+  --surface:#f8faf9;
+  --ink:#122a2c;
+  --muted:#4d6466;
+  --rule:#cfd9d8;
+  --accent:#c4640a;
+  --accent-soft:#f3dfc9;
+  --ok:#2f7d5b;
+  --font-display:"Bricolage Grotesque", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+  --font-body:"IBM Plex Sans", "Helvetica Neue", Arial, system-ui, sans-serif;
+  --font-mono:"IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  --s1:.25rem;--s2:.5rem;--s3:.75rem;--s4:1rem;--s5:1.5rem;--s6:2rem;--s7:3rem;--s8:4.5rem;
+  --maxw:68rem;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0f1918;--surface:#152322;--ink:#e3ecea;--muted:#9bb0ae;--rule:#26393a;
+    --accent:#f0a14f;--accent-soft:#3a2a19;--ok:#6cc79b;color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0f1918;--surface:#152322;--ink:#e3ecea;--muted:#9bb0ae;--rule:#26393a;
+  --accent:#f0a14f;--accent-soft:#3a2a19;--ok:#6cc79b;color-scheme:dark;
+}
+
+*{box-sizing:border-box}
+body{margin:0}
+img{max-width:100%}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{
+  background:var(--bg);color:var(--ink);
+  font-family:var(--font-body);font-size:1.0625rem;line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration-color:var(--accent);text-underline-offset:.2em;text-decoration-thickness:1.5px}
+a:hover{color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+
+.wrap{
+  max-width:var(--maxw);margin:0 auto;
+  padding-left:max(16px, env(safe-area-inset-left, 0px));
+  padding-right:max(16px, env(safe-area-inset-right, 0px));
+}
+.mono{font-family:var(--font-mono);font-size:.8125rem;letter-spacing:.02em}
+.label{font-family:var(--font-mono);font-size:.75rem;text-transform:uppercase;letter-spacing:.12em;color:var(--muted)}
+
+/* Header */
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-mix(in srgb, var(--bg) 88%, transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--rule)}
+header.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:var(--s4);padding-block:var(--s3)}
+.mark{font-family:var(--font-display);font-weight:800;font-size:1.125rem;text-decoration:none;letter-spacing:-.01em}
+.mark span{color:var(--accent)}
+nav ul{display:flex;gap:var(--s5);list-style:none;margin:0;padding:0;flex-wrap:wrap}
+nav a{text-decoration:none;font-size:.9375rem;color:var(--muted)}
+nav a:hover{color:var(--ink)}
+@media (max-width:560px){nav ul{gap:var(--s4)} nav li.hide-sm{display:none}}
+
+/* Hero */
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:var(--s7);align-items:end;padding-block:var(--s8) var(--s7)}
+@media (max-width:860px){.hero .wrap{grid-template-columns:minmax(0,1fr);gap:var(--s6);padding-block:var(--s7) var(--s6)}}
+.status{display:inline-flex;align-items:center;gap:var(--s2);margin-bottom:var(--s5)}
+.dot{width:.5rem;height:.5rem;border-radius:50%;background:var(--ok);box-shadow:0 0 0 4px color-mix(in srgb, var(--ok) 22%, transparent)}
+h1{
+  font-family:var(--font-display);font-weight:800;
+  font-size:clamp(2.75rem, 7.5vw, 5.5rem);line-height:.95;letter-spacing:-.035em;
+  margin:0 0 var(--s5);text-wrap:balance;
+}
+h1 .last{display:block;color:var(--accent)}
+.lede{font-size:clamp(1.125rem, 2vw, 1.3rem);line-height:1.5;max-width:34em;margin:0 0 var(--s6);text-wrap:pretty}
+.cta{display:flex;flex-wrap:wrap;gap:var(--s3);align-items:center}
+.btn{
+  display:inline-flex;align-items:center;gap:var(--s2);
+  font-family:var(--font-body);font-weight:500;font-size:.9375rem;
+  padding:.6rem 1rem;border-radius:6px;text-decoration:none;cursor:pointer;
+  border:1px solid var(--ink);background:var(--ink);color:var(--bg);
+}
+.btn:hover{background:var(--accent);border-color:var(--accent);color:var(--bg)}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--rule)}
+.btn.ghost:hover{border-color:var(--accent);color:var(--accent);background:transparent}
+.loc{margin-top:var(--s5);color:var(--muted)}
+
+/* Deploy readout */
+.readout{background:var(--surface);border:1px solid var(--rule);border-radius:10px;padding:var(--s5);display:grid;gap:var(--s5)}
+.readout h2{font-family:var(--font-mono);font-size:.75rem;font-weight:500;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin:0;display:flex;justify-content:space-between;gap:var(--s3)}
+.bars{display:grid;gap:var(--s3)}
+.bar-row{display:grid;grid-template-columns:4.5rem minmax(0,1fr);align-items:center;gap:var(--s3)}
+.track{position:relative;height:1.75rem}
+.fill{height:100%;border-radius:3px;display:flex;align-items:center;justify-content:flex-end;padding-right:.5rem;font-family:var(--font-mono);font-size:.8125rem;font-variant-numeric:tabular-nums;white-space:nowrap}
+.fill.before{width:100%;background:repeating-linear-gradient(135deg, var(--rule) 0 6px, transparent 6px 11px);color:var(--muted);border:1px solid var(--rule)}
+.fill.after{width:calc(8/35*100%);background:var(--accent);padding:0;position:relative;animation:grow .9s cubic-bezier(.2,.7,.2,1) both .2s}
+.fill.after span{position:absolute;left:calc(100% + .5rem);color:var(--accent);font-weight:500}
+@keyframes grow{from{transform:scaleX(.6);transform-origin:left}to{transform:scaleX(1);transform-origin:left}}
+.scale{display:grid;grid-template-columns:4.5rem minmax(0,1fr);gap:var(--s3)}
+.ticks{position:relative;height:1.1rem;font-family:var(--font-mono);font-size:.6875rem;color:var(--muted);font-variant-numeric:tabular-nums;border-top:1px solid var(--rule)}
+.ticks span{position:absolute;top:.2rem;transform:translateX(-50%)}
+.ticks span:first-child{transform:none}.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s4);border-top:1px solid var(--rule);padding-top:var(--s4)}
+.stat b{display:block;font-family:var(--font-display);font-weight:600;font-size:1.75rem;line-height:1.1;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.stat span{font-size:.8125rem;color:var(--muted);line-height:1.35;display:block;margin-top:.2rem}
+
+/* Sections */
+section.block{border-top:1px solid var(--rule)}
+section.block > .wrap{padding-block:var(--s8)}
+.sec-head{display:grid;grid-template-columns:minmax(0,14rem) minmax(0,1fr);gap:var(--s6);margin-bottom:var(--s6);align-items:baseline}
+@media (max-width:760px){.sec-head{grid-template-columns:minmax(0,1fr);gap:var(--s2)}}
+h2.sec{font-family:var(--font-display);font-weight:800;font-size:clamp(1.75rem,3.5vw,2.5rem);letter-spacing:-.025em;line-height:1.05;margin:0;text-wrap:balance}
+.sec-head p{margin:0;color:var(--muted);max-width:40em}
+
+/* Projects */
+.projects{display:grid;gap:0}
+.proj{display:grid;grid-template-columns:minmax(0,14rem) minmax(0,1fr);gap:var(--s6);padding-block:var(--s6);border-top:1px solid var(--rule)}
+.proj:first-child{border-top:0;padding-top:0}
+@media (max-width:760px){.proj{grid-template-columns:minmax(0,1fr);gap:var(--s3)}}
+.proj .meta{display:grid;gap:var(--s2);align-content:start}
+.proj .kind{font-family:var(--font-mono);font-size:.75rem;text-transform:uppercase;letter-spacing:.12em;color:var(--accent)}
+.proj .proof{font-family:var(--font-display);font-weight:600;font-size:1.5rem;line-height:1.15;font-variant-numeric:tabular-nums;letter-spacing:-.015em}
+.proj .proof small{display:block;font-family:var(--font-body);font-weight:400;font-size:.8125rem;color:var(--muted);letter-spacing:0;margin-top:.15rem}
+.proj h3{font-family:var(--font-display);font-weight:600;font-size:1.5rem;letter-spacing:-.015em;line-height:1.2;margin:0 0 var(--s2)}
+.proj p{margin:0 0 var(--s3);max-width:40em}
+.proj ul.points{margin:0 0 var(--s4);padding-left:1.1em;max-width:40em}
+.proj ul.points li{margin-bottom:.25rem}
+.proj ul.points li::marker{color:var(--accent)}
+.tags{display:flex;flex-wrap:wrap;gap:.4rem;list-style:none;margin:0 0 var(--s4);padding:0}
+.tags li{font-family:var(--font-mono);font-size:.75rem;padding:.2rem .5rem;border:1px solid var(--rule);border-radius:4px;color:var(--muted);background:var(--surface)}
+.links{display:flex;flex-wrap:wrap;gap:var(--s4);font-size:.9375rem;font-weight:500}
+.links a::after{content:" ↗";color:var(--accent)}
+
+/* Experience log */
+.log{list-style:none;margin:0;padding:0;display:grid}
+.entry{display:grid;grid-template-columns:minmax(0,14rem) minmax(0,1fr);gap:var(--s6);padding-block:var(--s5);border-top:1px solid var(--rule)}
+.entry:first-child{border-top:0;padding-top:0}
+@media (max-width:760px){.entry{grid-template-columns:minmax(0,1fr);gap:var(--s2)}}
+.when{font-family:var(--font-mono);font-size:.8125rem;color:var(--muted);font-variant-numeric:tabular-nums;padding-top:.3rem}
+.entry h3{font-family:var(--font-body);font-weight:600;font-size:1.125rem;margin:0}
+.entry .org{color:var(--muted);margin:0 0 var(--s2)}
+.entry p{margin:0;max-width:40em}
+.entry.current .when{color:var(--accent)}
+
+/* Skills */
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,15rem),1fr));gap:var(--s6) var(--s5)}
+.skills h3{margin:0 0 var(--s2);font-family:var(--font-mono);font-weight:500;font-size:.75rem;text-transform:uppercase;letter-spacing:.12em;color:var(--accent)}
+.skills p{margin:0;line-height:1.55}
+
+/* Education */
+.edu{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,18rem),1fr));gap:var(--s5)}
+.edu article{border-top:2px solid var(--ink);padding-top:var(--s3)}
+.edu h3{margin:0;font-size:1.0625rem;font-weight:600}
+.edu p{margin:.25rem 0 0;color:var(--muted);font-size:.9375rem}
+
+/* Contact */
+.contact .wrap{padding-block:var(--s8)}
+.contact h2{font-family:var(--font-display);font-weight:800;font-size:clamp(2.25rem,6vw,4rem);letter-spacing:-.035em;line-height:1;margin:0 0 var(--s5);text-wrap:balance}
+.contact h2 em{font-style:normal;color:var(--accent)}
+.email-row{display:flex;flex-wrap:wrap;gap:var(--s3);align-items:center;margin-bottom:var(--s5)}
+.email{font-family:var(--font-mono);font-size:clamp(1rem,2.4vw,1.25rem);padding:.55rem .8rem;border:1px solid var(--rule);border-radius:6px;background:var(--surface);user-select:all;overflow-wrap:anywhere;min-width:0}
+.copied{font-family:var(--font-mono);font-size:.8125rem;color:var(--ok)}
+footer{border-top:1px solid var(--rule)}
+footer .wrap{padding-block:var(--s5);display:flex;flex-wrap:wrap;justify-content:space-between;gap:var(--s3);color:var(--muted);font-size:.875rem}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="mark" href="#top">CSV<span>.</span></a>
+    <nav aria-label="Sections">
+      <ul>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li class="hide-sm"><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <div class="status label"><span class="dot" aria-hidden="true"></span>Available for full-time roles</div>
+        <h1>Chandrabhan <span class="last">Singh Vaghela</span></h1>
+        <p class="lede">I run production infrastructure on Azure, Docker and Kubernetes, cut slow deployments down to minutes, and build AI agent systems that are tested and logged like any other service.</p>
+        <div class="cta">
+          <a class="btn" href="#work">See projects</a>
+          <a class="btn ghost" href="https://github.com/mrchandrabhan" target="_blank" rel="noopener">GitHub</a>
+          <a class="btn ghost" href="https://www.linkedin.com/in/mrchandrabhan" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+        <p class="loc mono">Boston, MA · Open to relocate · M.S. Computer Science, Clarkson University</p>
+      </div>
+
+      <aside class="readout" aria-label="Production results at Adcrack Media">
+        <h2><span>Release pipeline</span><span>Adcrack Media</span></h2>
+        <div class="bars" role="img" aria-label="Deployment time reduced from 35 minutes to 8 minutes">
+          <div class="bar-row">
+            <span class="label">Before</span>
+            <div class="track"><div class="fill before">35 min</div></div>
+          </div>
+          <div class="bar-row">
+            <span class="label">After</span>
+            <div class="track"><div class="fill after"><span>8 min</span></div></div>
+          </div>
+          <div class="scale" aria-hidden="true">
+            <span></span>
+            <div class="ticks"><span style="left:0">0</span><span style="left:calc(10/35*100%)">10</span><span style="left:calc(20/35*100%)">20</span><span style="left:calc(30/35*100%)">30</span></div>
+          </div>
+        </div>
+        <div class="stats">
+          <div class="stat"><b>99.9%</b><span>uptime across ~15 Linux servers</span></div>
+          <div class="stat"><b>12</b><span>services on Docker and Kubernetes</span></div>
+          <div class="stat"><b>65%</b><span>less manual release effort</span></div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="block" id="work">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 class="sec">Selected work</h2>
+        <p>Projects built end to end, from data and model code to tests, logging and deployment.</p>
+      </div>
+
+      <div class="projects">
+        <article class="proj">
+          <div class="meta">
+            <span class="kind">Applied AI</span>
+            <span class="proof">Live on Render<small>Deployed demo</small></span>
+          </div>
+          <div>
+            <h3>Agentic RAG Document Q&amp;A</h3>
+            <p>Ask questions of your own documents. An agent decides what to retrieve from the indexed text, then answers from the passages it finds instead of guessing.</p>
+            <ul class="tags">
+              <li>Python</li><li>RAG</li><li>LLM agents</li><li>Vector search</li><li>Render</li>
+            </ul>
+            <div class="links">
+              <a href="https://github.com/mrchandrabhan/agentic-rag-docqa" target="_blank" rel="noopener">Code</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="proj">
+          <div class="meta">
+            <span class="kind">Multi-agent system</span>
+            <span class="proof">96 tests<small>passing, plus a 14-case labeled eval</small></span>
+          </div>
+          <div>
+            <h3>Job Search Agent Pipeline</h3>
+            <p>A crew of cooperating agents that finds postings, screens them against hard requirements and drafts tailored application material.</p>
+            <ul class="points">
+              <li>Built on CrewAI with the Anthropic API</li>
+              <li>14-case labeled evaluation harness to score agent decisions</li>
+              <li>Per-agent JSONL logs so every decision can be traced and replayed</li>
+            </ul>
+            <ul class="tags">
+              <li>CrewAI</li><li>Anthropic API</li><li>Python</li><li>pytest</li>
+            </ul>
+            <div class="links">
+              <a href="https://github.com/mrchandrabhan" target="_blank" rel="noopener">Code</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="proj">
+          <div class="meta">
+            <span class="kind">Full-stack</span>
+            <span class="proof">2 roles<small>Student and Staff, role-aware UI</small></span>
+          </div>
+          <div>
+            <h3>CU Pantry Smart Locker System</h3>
+            <p>Campus food-assistance platform at Clarkson University. Students order pantry items and collect them from smart lockers; staff manage inventory, orders and lockers. I owned the frontend.</p>
+            <ul class="points">
+              <li>Order flow with status transitions and locker assignment</li>
+              <li>Locker management with temperature logging</li>
+              <li>API calls proxied through the frontend server to avoid cross-origin cookie issues</li>
+            </ul>
+            <ul class="tags">
+              <li>React</li><li>Next.js</li><li>TypeScript</li><li>Tailwind CSS</li><li>Django REST Framework</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="proj">
+          <div class="meta">
+            <span class="kind">Machine learning</span>
+            <span class="proof">R² 0.927<small>on held-out data (0.944 cross-validated)</small></span>
+          </div>
+          <div>
+            <h3>Concrete Compressive Strength Model</h3>
+            <p>Regression pipeline on the UCI concrete dataset that predicts compressive strength in MPa from mix proportions and curing age, with SHAP explanations for each prediction.</p>
+            <ul class="tags">
+              <li>scikit-learn</li><li>SHAP</li><li>LOOCV</li><li>pandas</li>
+            </ul>
+            <div class="links">
+              <a href="https://github.com/mrchandrabhan" target="_blank" rel="noopener">Code</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="experience">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 class="sec">Experience</h2>
+        <p>Three-plus years running production systems, plus research and product work since.</p>
+      </div>
+      <ol class="log" reversed>
+        <li class="entry current">
+          <span class="when">Aug 2026 – now</span>
+          <div>
+            <h3>DevSecOps Volunteer</h3>
+            <p class="org">Saayam For All (nonprofit)</p>
+            <p>Contributing to the organization's DevSecOps repository on GitHub.</p>
+          </div>
+        </li>
+        <li class="entry">
+          <span class="when">Jan 2026 – May 2026</span>
+          <div>
+            <h3>Web Application Developer</h3>
+            <p class="org">Clarkson University · Potsdam, NY</p>
+            <p>Built the frontend of the CU Pantry smart locker platform with a role-aware dashboard, inventory browser, ordering and locker management.</p>
+          </div>
+        </li>
+        <li class="entry">
+          <span class="when">Jun 2025 – Aug 2025</span>
+          <div>
+            <h3>R&amp;D Engineer Intern</h3>
+            <p class="org">USC SPHERE Project · Los Angeles, CA</p>
+            <p>Configured IoT devices and built event-driven pipelines that move research data from the field into analysis.</p>
+          </div>
+        </li>
+        <li class="entry">
+          <span class="when">Mar 2021 – Sep 2024</span>
+          <div>
+            <h3>System Administrator / DevOps Engineer</h3>
+            <p class="org">Adcrack Media Pvt Ltd · Bangalore</p>
+            <p>Kept about 15 production Linux servers at 99.9% uptime. Provisioned Azure with Terraform and Ansible, built Jenkins CI/CD that took deployments from 35 to 8 minutes, ran 12 containerized services on Docker and Kubernetes, and built a Kafka analytics pipeline with Azure Monitor alerting.</p>
+          </div>
+        </li>
+        <li class="entry">
+          <span class="when">Feb 2019 – Mar 2021</span>
+          <div>
+            <h3>Digital Marketing Executive</h3>
+            <p class="org">Brandlance · Pune</p>
+            <p>Ran Google Ads campaigns, tracked them with Google Analytics and UTM links, piped form leads into the CRM and built performance dashboards.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="block" id="skills">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 class="sec">Toolkit</h2>
+        <p>What I reach for, grouped by the job it does.</p>
+      </div>
+      <div class="skills">
+        <div><h3>Cloud &amp; IaC</h3><p>Azure, Terraform, Ansible, Azure Monitor</p></div>
+        <div><h3>Containers &amp; delivery</h3><p>Docker, Kubernetes, Jenkins CI/CD, Git</p></div>
+        <div><h3>Systems &amp; data</h3><p>Linux administration, Kafka, PostgreSQL, IoT data pipelines</p></div>
+        <div><h3>Applied AI</h3><p>CrewAI, Anthropic API, RAG, agent evaluation, scikit-learn, SHAP</p></div>
+        <div><h3>Web</h3><p>React, TypeScript, Next.js, Vite, Tailwind CSS, Django REST Framework</p></div>
+        <div><h3>Also</h3><p>GIS with ArcGIS Pro, Google Analytics, CRM and marketing tooling</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="education">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 class="sec">Education</h2>
+        <p>Degrees and certifications.</p>
+      </div>
+      <div class="edu">
+        <article>
+          <h3>M.S. Computer Science</h3>
+          <p>Clarkson University · 2024 – 2026 · 50% merit scholarship</p>
+        </article>
+        <article>
+          <h3>B.E. Electronics &amp; Communication</h3>
+          <p>RGPV University · 2014 – 2018 · First Class</p>
+        </article>
+        <article>
+          <h3>Certifications</h3>
+          <p>Microsoft Certified: Azure Fundamentals (AZ-900) · Certified Blockchain Associate</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="block contact" id="contact">
+    <div class="wrap">
+      <p class="label">Contact</p>
+      <h2>Hiring for DevOps, cloud or applied AI? <em>Let's talk.</em></h2>
+      <div class="email-row">
+        <span class="email" id="email">mr.chandrabhansv@gmail.com</span>
+        <button class="btn" type="button" id="copy-email">Copy email</button>
+        <span class="copied" id="copy-status" aria-live="polite"></span>
+      </div>
+      <div class="cta">
+        <a class="btn ghost" href="https://www.linkedin.com/in/mrchandrabhan" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn ghost" href="https://github.com/mrchandrabhan" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Chandrabhan Singh Vaghela</span>
+    <span class="mono">uptime: 99.9% · deploy: 8 min</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var btn=document.getElementById('copy-email');
+  var out=document.getElementById('copy-status');
+  var email=document.getElementById('email');
+  function selectIt(){
+    var r=document.createRange();r.selectNodeContents(email);
+    var s=window.getSelection();s.removeAllRanges();s.addRange(r);
+  }
+  btn.addEventListener('click',function(){
+    var text=email.textContent.trim();
+    try{
+      navigator.clipboard.writeText(text).then(function(){out.textContent='Copied';},function(){selectIt();out.textContent='Selected. Press Ctrl+C to copy';});
+    }catch(e){selectIt();out.textContent='Selected. Press Ctrl+C to copy';}
+  });
+})();
+</script>
+
+</body>
+</html>
