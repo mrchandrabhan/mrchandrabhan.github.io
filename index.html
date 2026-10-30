@@ -237,10 +237,55 @@ footer .wrap{padding-block:var(--s5);display:flex;flex-wrap:wrap;justify-content
     <div class="wrap">
       <div class="sec-head">
         <h2 class="sec">Selected work</h2>
-        <p>Projects built end to end, from data and model code to tests, logging and deployment.</p>
+        <p>Selected work across applied AI, enterprise integrations, backend systems and infrastructure — including active builds with public roadmaps.</p>
       </div>
 
       <div class="projects">
+        <article class="proj">
+          <div class="meta">
+            <span class="kind">Enterprise AI · In progress</span>
+            <span class="proof">Architecture published<small>Implementation roadmap and issues open</small></span>
+          </div>
+          <div>
+            <h3>Nexus AI — Enterprise Intelligence &amp; Automation</h3>
+            <p>Building an enterprise AI assistant that combines grounded knowledge retrieval with controlled business-tool integrations. The first milestone is a document-grounded assistant with citations; later milestones add authorization, auditable tool calls and human-approved workflows.</p>
+            <ul class="points">
+              <li>Current stage: project scope, architecture and delivery roadmap published</li>
+              <li>Planned MVP: RAG, source citations, one read-only business tool and evaluation tests</li>
+              <li>Future focus: access control, approval gates, auditability and observability</li>
+            </ul>
+            <ul class="tags">
+              <li>Python</li><li>FastAPI</li><li>Next.js</li><li>PostgreSQL</li><li>pgvector</li><li>LLM integration</li>
+            </ul>
+            <div class="links">
+              <a href="https://github.com/mrchandrabhan/Nexus-AI" target="_blank" rel="noopener">Code &amp; roadmap</a>
+              <a href="https://github.com/mrchandrabhan/Nexus-AI/issues" target="_blank" rel="noopener">Issues</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="proj">
+          <div class="meta">
+            <span class="kind">Backend &amp; SRE · In progress</span>
+            <span class="proof">Architecture published<small>Simulation-only project</small></span>
+          </div>
+          <div>
+            <h3>Apex Exchange — Simulated Digital Asset Exchange</h3>
+            <p>Designing a simulated centralized exchange to study order matching, balance correctness and reliability engineering. The initial scope is a test-funds-only exchange with deterministic price-time matching, partial fills and real-time market updates.</p>
+            <ul class="points">
+              <li>Current stage: project scope, architecture, core invariants and roadmap published</li>
+              <li>Planned MVP: limit orders, matching engine, simulated balances and double-entry ledger</li>
+              <li>Future focus: concurrency tests, recovery, performance benchmarks and observability</li>
+            </ul>
+            <ul class="tags">
+              <li>Python</li><li>FastAPI</li><li>Next.js</li><li>PostgreSQL</li><li>WebSockets</li><li>Distributed systems</li>
+            </ul>
+            <div class="links">
+              <a href="https://github.com/mrchandrabhan/Apex-exchange" target="_blank" rel="noopener">Code &amp; roadmap</a>
+              <a href="https://github.com/mrchandrabhan/Apex-exchange/issues" target="_blank" rel="noopener">Issues</a>
+            </div>
+          </div>
+        </article>
         <article class="proj">
           <div class="meta">
             <span class="kind">Applied AI</span>
