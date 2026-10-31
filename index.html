@@ -243,19 +243,19 @@ footer .wrap{padding-block:var(--s5);display:flex;flex-wrap:wrap;justify-content
       <div class="projects">
         <article class="proj">
           <div class="meta">
-            <span class="kind">Pinned build · Enterprise AI · In progress</span>
-            <span class="proof">RAG integration committed<small>CI passing · local end-to-end verification pending</small></span>
+            <span class="kind">Pinned build · Local-first enterprise workspace</span>
+            <span class="proof">4 services in Compose<small>CI green · backend, frontend &amp; Compose checks</small></span>
           </div>
           <div>
-            <h3>Nexus AI — Enterprise AI Intelligence &amp; Governance</h3>
-            <p>An enterprise workspace that reuses the existing Agentic RAG engine through a FastAPI adapter. Nexus proxies document uploads and grounded questions, then displays page-level citations and the agent trace. The next layer adds identity, workspace permissions, controlled tools, approvals and audit events.</p>
+            <h3>Nexus AI — Local-First Knowledge Workspace</h3>
+            <p>A containerized enterprise-style workspace that connects a Next.js and FastAPI control plane to a separate local document-RAG service. Users can upload business documents, ask grounded questions and inspect source citations, retrieved passages and execution traces — without a hosted LLM API.</p>
             <ul class="points">
-              <li>Existing RAG engine remains the single implementation for document parsing, embeddings, retrieval, LangGraph workflows and citation validation</li>
-              <li>Nexus backend proxies document uploads and questions; the Next.js workspace displays grounded answers, source citations and agent execution traces</li>
-              <li>Next: user identity, workspace RBAC, retrieval scoping, tool policies, human approvals and auditable actions</li>
+              <li>Docker Compose orchestrates PostgreSQL, the Nexus API, the frontend and a health-gated Agentic RAG service</li>
+              <li>Persists uploaded source files and the local MiniLM model cache in Docker volumes; saved uploads are re-indexed after service restarts</li>
+              <li>Enterprise identity, workspace RBAC, retrieval isolation, controlled tools, approvals and audit events remain planned milestones — not claimed as implemented</li>
             </ul>
             <ul class="tags">
-              <li>Python</li><li>FastAPI</li><li>Next.js</li><li>LangGraph</li><li>FAISS</li><li>AI governance</li>
+              <li>Python</li><li>FastAPI</li><li>Next.js</li><li>PostgreSQL</li><li>Docker Compose</li><li>MiniLM</li>
             </ul>
             <div class="links">
               <a href="https://github.com/mrchandrabhan/Nexus-AI" target="_blank" rel="noopener">Code &amp; roadmap</a>
@@ -288,17 +288,23 @@ footer .wrap{padding-block:var(--s5);display:flex;flex-wrap:wrap;justify-content
         </article>
         <article class="proj">
           <div class="meta">
-            <span class="kind">Applied AI</span>
-            <span class="proof">Live on Render<small>Deployed demo</small></span>
+            <span class="kind">Applied AI · Local document intelligence</span>
+            <span class="proof">16-case evaluation<small>CI green · Python 3.11 &amp; 3.12 + MiniLM evaluation</small></span>
           </div>
           <div>
             <h3>Agentic RAG Document Q&amp;A</h3>
-            <p>Ask questions of your own documents. An agent decides what to retrieve from the indexed text, then answers from the passages it finds instead of guessing.</p>
+            <p>A local-first document question-answering engine for PDF, DOCX, Markdown and text files. It combines MiniLM embeddings with lexical retrieval, then selects evidence from relevant passages and cites the source file and page — without calling a hosted answer-generation API.</p>
+            <ul class="points">
+              <li>LangGraph workflow retrieves and grades chunks, rewrites weak queries, validates citation indices and abstains when evidence is insufficient</li>
+              <li>Hybrid vector and BM25-style lexical ranking improves technical-term, acronym and exact-name retrieval across FAISS or ChromaDB</li>
+              <li>Deterministic local extractive answers, page-level citations, persistent source uploads, diagnostic retrieval endpoint and a labeled quality-evaluation harness</li>
+            </ul>
             <ul class="tags">
-              <li>Python</li><li>RAG</li><li>LLM agents</li><li>Vector search</li><li>Render</li>
+              <li>Python</li><li>LangGraph</li><li>MiniLM</li><li>FAISS</li><li>ChromaDB</li><li>Hybrid retrieval</li>
             </ul>
             <div class="links">
               <a href="https://github.com/mrchandrabhan/agentic-rag-docqa" target="_blank" rel="noopener">Code</a>
+              <a href="https://agentic-rag-docqa-dwvv.onrender.com/" target="_blank" rel="noopener">Live demo</a>
             </div>
           </div>
         </article>
@@ -425,7 +431,7 @@ footer .wrap{padding-block:var(--s5);display:flex;flex-wrap:wrap;justify-content
         <div><h3>Cloud &amp; IaC</h3><p>Azure, Terraform, Ansible, Azure Monitor</p></div>
         <div><h3>Containers &amp; delivery</h3><p>Docker, Kubernetes, Jenkins CI/CD, Git</p></div>
         <div><h3>Systems &amp; data</h3><p>Linux administration, Kafka, PostgreSQL, IoT data pipelines</p></div>
-        <div><h3>Applied AI</h3><p>CrewAI, Anthropic API, RAG, agent evaluation, scikit-learn, SHAP</p></div>
+        <div><h3>Applied AI</h3><p>Local-first RAG, LangGraph, CrewAI, hybrid retrieval, agent evaluation, scikit-learn, SHAP</p></div>
         <div><h3>Web</h3><p>React, TypeScript, Next.js, Vite, Tailwind CSS, Django REST Framework</p></div>
         <div><h3>Also</h3><p>GIS with ArcGIS Pro, Google Analytics, CRM and marketing tooling</p></div>
       </div>
